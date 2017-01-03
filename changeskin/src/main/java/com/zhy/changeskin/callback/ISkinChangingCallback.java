@@ -3,8 +3,7 @@ package com.zhy.changeskin.callback;
 /**
  * Created by zhy on 15/9/22.
  */
-public interface ISkinChangingCallback
-{
+public interface ISkinChangingCallback {
     void onStart();
 
     void onError(Exception e);
@@ -13,23 +12,19 @@ public interface ISkinChangingCallback
 
     public static DefaultSkinChangingCallback DEFAULT_SKIN_CHANGING_CALLBACK = new DefaultSkinChangingCallback();
 
-    public class DefaultSkinChangingCallback implements ISkinChangingCallback
-    {
+    public class DefaultSkinChangingCallback implements ISkinChangingCallback {
         @Override
-        public void onStart()
-        {
+        public void onStart() {
 
         }
 
         @Override
-        public void onError(Exception e)
-        {
+        public void onError(Exception e) {
 
         }
 
         @Override
-        public void onComplete()
-        {
+        public void onComplete() {
 
         }
     }

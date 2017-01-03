@@ -9,9 +9,9 @@ import com.zhy.changeskin.utils.L;
 
 /**
  * Created by zhy on 15/9/22.
+ * 管理“根据名称找到资源引用”的方法
  */
-public class ResourceManager
-{
+public class ResourceManager {
     private static final String DEFTYPE_DRAWABLE = "drawable";
     private static final String DEFTYPE_COLOR = "color";
     private Resources mResources;
@@ -19,21 +19,18 @@ public class ResourceManager
     private String mSuffix;
 
 
-    public ResourceManager(Resources res, String pluginPackageName, String suffix)
-    {
+    public ResourceManager(Resources res, String pluginPackageName, String suffix) {
         mResources = res;
         mPluginPackageName = pluginPackageName;
 
-        if (suffix == null)
-        {
+        if (suffix == null) {
             suffix = "";
         }
         mSuffix = suffix;
 
     }
 
-    public Drawable getDrawableByName(String name)
-    {
+    public Drawable getDrawableByName(String name) {
         try {
             name = appendSuffix(name);
             L.e("name = " + name);
@@ -48,16 +45,13 @@ public class ResourceManager
         }
     }
 
-    public int getColor(String name)
-    {
-        try
-        {
+    public int getColor(String name) {
+        try {
             name = appendSuffix(name);
             L.e("name = " + name);
             return mResources.getColor(mResources.getIdentifier(name, DEFTYPE_COLOR, mPluginPackageName));
 
-        } catch (Resources.NotFoundException e)
-        {
+        } catch (Resources.NotFoundException e) {
             e.printStackTrace();
             return -1;
         }
@@ -65,25 +59,22 @@ public class ResourceManager
     }
 
     public ColorStateList getColorStateList(String name) {
-        try
-        {
+        try {
             name = appendSuffix(name);
             L.e("name = " + name);
             return mResources.getColorStateList(mResources.getIdentifier(name, DEFTYPE_COLOR, mPluginPackageName));
 
-        } catch (Resources.NotFoundException e)
-        {
+        } catch (Resources.NotFoundException e) {
             e.printStackTrace();
             return null;
         }
 
     }
 
-    private String appendSuffix(String name)
-    {
+    private String appendSuffix(String name) {
         if (!TextUtils.isEmpty(mSuffix))
             return name += "_" + mSuffix;
-        return name ;
+        return name;
     }
 
 }
